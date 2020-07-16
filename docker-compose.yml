@@ -3,10 +3,8 @@ services:
   db:
     container_name: pg-prod
     image: postgres:9.6
-    #ports:
-    #  - 5000:5432    
-    networks:
-      - prod_net_back
+    #networks:
+    #  - prod_net_back
     environment:
       - POSTGRES_PASSWORD=passwd
       - POSTGRES_DB=tasks
@@ -22,9 +20,9 @@ services:
       args:
         - WAR_FILE=tasks-backend.war
         - CONTEXT=tasks-backend
-    networks:
-      - prod_net_back
-      - prod_net_front
+    #networks:
+    #  - prod_net_back
+    #  - prod_net_front
     ports:
       - 9998:8080
     environment:
@@ -44,8 +42,8 @@ services:
         args:
           - WAR_FILE=tasks.war
           - CONTEXT=tasks
-    networks:
-      - prod_net_front
+    #networks:
+    #  - prod_net_front
     ports:
       - 9999:8080
     environment:
